@@ -1,12 +1,9 @@
 package steps;
 
 import core.pages.CheckoutPage;
-import core.utils.DriverManager;
 import io.cucumber.java.en.*;
-import org.openqa.selenium.WebDriver;
 
 public class CheckoutSteps {
-    private final WebDriver driver = DriverManager.getInstance().getDriver();
     private final CheckoutPage checkoutPage = new CheckoutPage();
 
     @When("user enters personal details and continues")

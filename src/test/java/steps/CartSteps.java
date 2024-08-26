@@ -1,13 +1,10 @@
 package steps;
 
 import core.pages.CartPage;
-import core.utils.DriverManager;
 import io.cucumber.java.en.*;
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
 public class CartSteps {
-    private final WebDriver driver = DriverManager.getInstance().getDriver();
     private final CartPage cartPage = new CartPage();
 
     @When("user proceeds to checkout")
