@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class ProductsPage {
-    private WebDriver driver;
+    private final WebDriver driver;
 
     @FindBy(css = ".inventory_item")
     private List<WebElement> products;
@@ -30,12 +30,12 @@ public class ProductsPage {
         PageFactory.initElements(driver, this);
     }
 
-    public void addRandomProductToCart() {
+    public ProductsPage addRandomProductToCart() {
         int randomIndex = ThreadLocalRandom.current().nextInt(products.size());
         WebElement randomProduct = products.get(randomIndex);
         WebElement addButton = randomProduct.findElement(By.cssSelector(".btn_inventory"));
         WaitUtils.waitForElementToBeClickable(driver, addButton);
-        addButton.click();
+        addButton.click(); return this;
     }
 
     public void goToCart() {

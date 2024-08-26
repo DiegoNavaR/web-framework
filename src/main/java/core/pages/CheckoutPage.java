@@ -8,7 +8,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class CheckoutPage {
-    private WebDriver driver;
+    private final WebDriver driver;
 
     @FindBy(id = "first-name")
     private WebElement firstNameInput;

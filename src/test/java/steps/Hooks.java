@@ -13,6 +13,7 @@ public class Hooks {
         LoggerUtils.logInfo("Setting up driver");
         WebDriver driver = DriverManager.getInstance().getDriver();
         driver.manage().window().maximize();
+        // driver.manage().timeouts().implicitlyWait(10, java.util.concurrent.TimeUnit.SECONDS);
         driver.get("https://www.saucedemo.com");
     }
 

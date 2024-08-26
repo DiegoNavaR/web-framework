@@ -8,7 +8,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage {
-    private WebDriver driver;
+    private final WebDriver driver;
 
     @FindBy(id = "user-name")
     private WebElement userNameInput;
@@ -24,7 +24,7 @@ public class LoginPage {
         PageFactory.initElements(driver, this);
     }
 
-    public void login(String username, String password) {
+    public void login(final String username, String password) {
         WaitUtils.waitForElementToBeVisible(driver, userNameInput);
         userNameInput.sendKeys(username);
         passwordInput.sendKeys(password);

@@ -9,7 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.List;
 
 public class CartPage {
-    private WebDriver driver;
+    private final WebDriver driver;
 
     @FindBy(css = ".cart_item")
     private List<WebElement> cartItems;

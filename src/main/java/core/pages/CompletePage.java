@@ -8,7 +8,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class CompletePage {
-    private WebDriver driver;
+    private final WebDriver driver;
 
     @FindBy(css = ".complete-header")
     private WebElement thankYouMessage;
