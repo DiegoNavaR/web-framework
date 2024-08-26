@@ -22,8 +22,8 @@ public class LoginSteps {
         productsPage.logout();
     }
 
-    @Then("user is redirected to the login page")
-    public void redirected_to_login_page() {
-        Assert.assertTrue(driver.getCurrentUrl().contains("saucedemo.com"));
+    @Then("user is redirected to the login page {string}")
+    public void redirected_to_login_page(String page) {
+        Assert.assertTrue(driver.getCurrentUrl().contains(page));
     }
 }
