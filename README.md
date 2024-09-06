@@ -12,14 +12,13 @@
 
 **Then** user is redirected to the login page "saucedemo.com"
 
+
 ### Purchase a product
 
-**Background:** User logs in
+**Scenario:** Purchase a single product
 
 **Given** user logs in with username "standard_user" and password "secret_sauce"
 
-**Scenario:** Purchase a single product
-
 **When** user adds a random product to the cart
 
 **And** user proceeds to checkout
@@ -30,17 +29,6 @@
 
 **Then** the order is completed successfully
 
-**Scenario:** Purchase a single product
-
-**When** user adds a random product to the cart
-
-**And** user proceeds to checkout
-
-**And** user enters personal details and continues
-
-**And** user finishes the checkout process
-
-**Then** the order is completed successfully
 
 ### Remove elements from the shopping cart
 
