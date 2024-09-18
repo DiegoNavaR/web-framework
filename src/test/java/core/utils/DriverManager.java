@@ -3,6 +3,7 @@ package core.utils;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 public class DriverManager {
     private static DriverManager instance;
@@ -10,7 +11,12 @@ public class DriverManager {
 
     private DriverManager() {
         WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless=new");
+        options.addArguments("--disable-gpu");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--window-size=1920x1080");
+        driver = new ChromeDriver(options);
     }
 
     public static DriverManager getInstance() {
