@@ -3,10 +3,17 @@ name: Java CI with Maven and Allure
 on:
   push:
     branches:
-      - 'master'
+      - master
   pull_request:
     branches:
-      - 'master'
+      - master
+  workflow_dispatch:
+    inputs:
+      browserName:
+        description: 'Browser type'
+        required: false
+        type: string
+        default: 'CHROME'
 
 jobs:
   build:
@@ -14,16 +21,16 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Set up JDK 17
-        uses: actions/setup-java@v2
+        uses: actions/setup-java@v4
         with:
           java-version: '17'
           distribution: 'temurin'
 
       - name: Cache Maven dependencies
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         with:
           path: ~/.m2/repository
           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
@@ -34,18 +41,9 @@ jobs:
         run: mvn clean install
 
       - name: Run tests
-        run: mvn test
+        run: mvn -DbrowserName=${{ inputs.browserName || 'CHROME' }} verify
 
-      - name: Generate Allure report
-        run: mvn allure:report
-
-      - name: Upload Allure report
-        uses: actions/upload-artifact@v2
-        with:
-          name: allure-report
-          path: target/allure-results
-
-      - name: Get Allure history
+      - name: Load test report history
         uses: actions/checkout@v3
         if: always()
         continue-on-error: true
@@ -53,21 +51,18 @@ jobs:
           ref: gh-pages
           path: gh-pages
 
-      - name: Allure report action
-        uses: simple-elf/allure-report-action@master
+      - name: Build test report
+        uses: simple-elf/allure-report-action@v1.7
         if: always()
-        id: allure-report
         with:
-          allure_results: target/allure-results
           gh_pages: gh-pages
-          allure_report: allure-report
           allure_history: allure-history
+          allure_results: build/allure-results
 
-      - name: Deploy report to GitHub Pages
+      - name: Publish test report
+        uses: peaceiris/actions-gh-pages@v3
         if: always()
-        uses: crazy-max/ghaction-github-pages@v4
         with:
-          target_branch: gh-pages
-          build_dir: allure-history
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: allure-history
