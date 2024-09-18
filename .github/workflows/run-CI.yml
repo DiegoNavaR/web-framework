@@ -62,6 +62,6 @@ jobs:
         if: always()
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages
-          publish_dir: allure-history
+          build_dir: allure-history
+          target_branch: gh-pages
           keep_history: true
