@@ -15,6 +15,7 @@ public class Hooks {
     @Description("This method sets up the WebDriver before each scenario.")
     public void setup() {
         LoggerUtils.logInfo("Setting up driver");
+
         WebDriver driver = DriverManager.getInstance().getDriver();
         driver.manage().window().maximize();
         driver.get("https://www.saucedemo.com");

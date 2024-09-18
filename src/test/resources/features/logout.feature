@@ -1,3 +1,4 @@
+@Logout @Regression
 Feature: Logout from the application
 
   Scenario: Successfully logout and redirect to login page
