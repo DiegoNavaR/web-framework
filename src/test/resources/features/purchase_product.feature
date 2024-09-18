@@ -1,3 +1,4 @@
+@Purchase @Regression @Functional
 Feature: Purchase a product
 
   Scenario: Purchase a single product

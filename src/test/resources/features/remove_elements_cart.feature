@@ -1,3 +1,4 @@
+@RemoveFromCart @Regression @Functional
 Feature: Remove elements from the shopping cart
 
   Scenario: Remove all items from the cart
