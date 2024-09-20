@@ -1,0 +1,4 @@
+"Epic","Feature","Story","FAILED","BROKEN","PASSED","SKIPPED","UNKNOWN"
+"","Logout from the application","Successfully logout and redirect to login page","0","0","1","0","0"
+"","Purchase a product","Purchase a single product","0","0","1","0","0"
+"","Remove elements from the shopping cart","Remove all items from the cart","0","0","1","0","0"
