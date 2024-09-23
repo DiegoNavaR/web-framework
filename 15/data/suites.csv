@@ -1,0 +1,4 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Mon Sep 23 21:35:47 GMT 2024","Mon Sep 23 21:35:50 GMT 2024","2138","","Logout from the application","","Successfully logout and redirect to login page","","Successfully logout and redirect to login page",""
+"passed","Mon Sep 23 21:35:51 GMT 2024","Mon Sep 23 21:35:52 GMT 2024","1094","","Remove elements from the shopping cart","","Remove all items from the cart","","Remove all items from the cart",""
+"passed","Mon Sep 23 21:35:50 GMT 2024","Mon Sep 23 21:35:51 GMT 2024","1335","","Purchase a product","","Purchase a single product","","Purchase a single product",""
