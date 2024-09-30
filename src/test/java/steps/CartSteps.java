@@ -1,13 +1,18 @@
 package steps;
 
 import core.pages.CartPage;
+import core.utils.TestContext;
 import io.cucumber.java.en.*;
 import io.qameta.allure.Step;
 import io.qameta.allure.Description;
 import org.junit.jupiter.api.Assertions;
 
 public class CartSteps {
-    private final CartPage cartPage = new CartPage();
+    private final CartPage cartPage;
+
+    public CartSteps(TestContext context, CartPage cartPage) {
+        this.cartPage = cartPage;
+    }
 
     @When("user proceeds to checkout")
     @Step("User proceeds to checkout")

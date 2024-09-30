@@ -10,6 +10,11 @@ import org.openqa.selenium.support.PageFactory;
 public class LoginPage {
     private final WebDriver driver;
 
+    public LoginPage(DriverManager driverManager) {
+        this.driver = driverManager.getDriver();
+        PageFactory.initElements(driver, this);
+    }
+
     @FindBy(id = "user-name")
     private WebElement userNameInput;
 
@@ -18,11 +23,6 @@ public class LoginPage {
 
     @FindBy(id = "login-button")
     private WebElement loginButton;
-
-    public LoginPage() {
-        this.driver = DriverManager.getInstance().getDriver();
-        PageFactory.initElements(driver, this);
-    }
 
     public void login(final String username, String password) {
         WaitUtils.waitForElementToBeVisible(driver, userNameInput);

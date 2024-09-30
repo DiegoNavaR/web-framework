@@ -1,13 +1,18 @@
 package steps;
 
 import core.pages.ProductsPage;
+import core.utils.TestContext;
 import io.cucumber.java.en.*;
 import io.qameta.allure.Description;
 import io.qameta.allure.Step;
 
 public class ProductSteps {
 
-    private final ProductsPage productsPage = new ProductsPage();
+    private final ProductsPage productsPage;
+
+    public ProductSteps(TestContext context, ProductsPage productsPage) {
+        this.productsPage = productsPage;
+    }
 
     @When("user adds a random product to the cart")
     @Step("User adds a random product to the cart")

@@ -1,12 +1,17 @@
 package steps;
 
 import core.pages.CheckoutPage;
+import core.utils.TestContext;
 import io.cucumber.java.en.*;
 import io.qameta.allure.Description;
 import io.qameta.allure.Step;
 
 public class CheckoutSteps {
-    private final CheckoutPage checkoutPage = new CheckoutPage();
+    private final CheckoutPage checkoutPage;
+
+    public CheckoutSteps(TestContext context, CheckoutPage checkoutPage) {
+        this.checkoutPage = checkoutPage;
+    }
 
     @When("user enters personal details and continues")
     @Step("User enters personal details: {firstName} {lastName}, zip: {zip}")

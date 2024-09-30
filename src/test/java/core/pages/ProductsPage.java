@@ -13,6 +13,11 @@ import java.util.concurrent.ThreadLocalRandom;
 public class ProductsPage {
     private final WebDriver driver;
 
+    public ProductsPage(DriverManager driverManager) {
+        this.driver = driverManager.getDriver();
+        PageFactory.initElements(driver, this);
+    }
+
     @FindBy(css = ".inventory_item")
     private List<WebElement> products;
 
@@ -25,17 +30,13 @@ public class ProductsPage {
     @FindBy(id = "logout_sidebar_link")
     private WebElement logoutLink;
 
-    public ProductsPage() {
-        this.driver = DriverManager.getInstance().getDriver();
-        PageFactory.initElements(driver, this);
-    }
-
     public ProductsPage addRandomProductToCart() {
         int randomIndex = ThreadLocalRandom.current().nextInt(products.size());
         WebElement randomProduct = products.get(randomIndex);
         WebElement addButton = randomProduct.findElement(By.cssSelector(".btn_inventory"));
         WaitUtils.waitForElementToBeClickable(driver, addButton);
-        addButton.click(); return this;
+        addButton.click();
+        return this;
     }
 
     public void goToCart() {

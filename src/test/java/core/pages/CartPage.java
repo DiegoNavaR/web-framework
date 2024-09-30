@@ -11,6 +11,11 @@ import java.util.List;
 public class CartPage {
     private final WebDriver driver;
 
+    public CartPage(DriverManager driverManager) {
+        this.driver = driverManager.getDriver();
+        PageFactory.initElements(driver, this);
+    }
+
     @FindBy(css = ".cart_item")
     private List<WebElement> cartItems;
 
@@ -19,11 +24,6 @@ public class CartPage {
 
     @FindBy(css = ".cart_button")
     private List<WebElement> removeButtons;
-
-    public CartPage() {
-        this.driver = DriverManager.getInstance().getDriver();
-        PageFactory.initElements(driver, this);
-    }
 
     public boolean isCartEmpty() {
         return cartItems.isEmpty();

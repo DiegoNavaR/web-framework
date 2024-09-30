@@ -10,6 +10,11 @@ import org.openqa.selenium.support.PageFactory;
 public class CheckoutPage {
     private final WebDriver driver;
 
+    public CheckoutPage(DriverManager driverManager) {
+        this.driver = driverManager.getDriver();
+        PageFactory.initElements(driver, this);
+    }
+
     @FindBy(id = "first-name")
     private WebElement firstNameInput;
 
@@ -24,11 +29,6 @@ public class CheckoutPage {
 
     @FindBy(css = ".btn_action.cart_button")
     private WebElement finishButton;
-
-    public CheckoutPage() {
-        this.driver = DriverManager.getInstance().getDriver();
-        PageFactory.initElements(driver, this);
-    }
 
     public void enterPersonalDetails(String firstName, String lastName, String postalCode) {
         WaitUtils.waitForElementToBeVisible(driver, firstNameInput);

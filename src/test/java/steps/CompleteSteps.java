@@ -1,13 +1,18 @@
 package steps;
 
 import core.pages.CompletePage;
+import core.utils.TestContext;
 import io.cucumber.java.en.*;
 import org.junit.jupiter.api.Assertions;
 import io.qameta.allure.Step;
 import io.qameta.allure.Description;
 
 public class CompleteSteps {
-    private final CompletePage completePage = new CompletePage();
+    private final CompletePage completePage;
+
+    public CompleteSteps(TestContext context, CompletePage completePage) {
+        this.completePage = completePage;
+    }
 
     @Then("the order is completed successfully")
     @Step("Verifying that the order is completed successfully")

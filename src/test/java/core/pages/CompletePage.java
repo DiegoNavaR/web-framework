@@ -10,13 +10,13 @@ import org.openqa.selenium.support.PageFactory;
 public class CompletePage {
     private final WebDriver driver;
 
-    @FindBy(css = ".complete-header")
-    private WebElement thankYouMessage;
-
-    public CompletePage() {
-        this.driver = DriverManager.getInstance().getDriver();
+    public CompletePage(DriverManager driverManager) {
+        this.driver = driverManager.getDriver();
         PageFactory.initElements(driver, this);
     }
+
+    @FindBy(css = ".complete-header")
+    private WebElement thankYouMessage;
 
     public boolean isOrderComplete() {
         WaitUtils.waitForElementToBeVisible(driver, thankYouMessage);
