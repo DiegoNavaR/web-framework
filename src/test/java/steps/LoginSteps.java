@@ -7,7 +7,7 @@ import org.openqa.selenium.WebDriver;
 import io.cucumber.java.en.*;
 import io.qameta.allure.Step;
 import io.qameta.allure.Description;
-import org.testng.Assert;
+import org.junit.jupiter.api.Assertions;
 
 public class LoginSteps {
     private final WebDriver driver = DriverManager.getInstance().getDriver();
@@ -32,6 +32,6 @@ public class LoginSteps {
     @Step("Verifying user is redirected to the login page: {page}")
     @Description("Checks that the user is redirected to the specified login page.")
     public void redirected_to_login_page(String page) {
-        Assert.assertTrue(driver.getCurrentUrl().contains(page));
+        Assertions.assertTrue(driver.getCurrentUrl().contains(page));
     }
 }

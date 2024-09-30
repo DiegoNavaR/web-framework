@@ -3,8 +3,8 @@ package steps;
 import core.pages.CartPage;
 import io.cucumber.java.en.*;
 import io.qameta.allure.Step;
-import org.testng.Assert;
 import io.qameta.allure.Description;
+import org.junit.jupiter.api.Assertions;
 
 public class CartSteps {
     private final CartPage cartPage = new CartPage();
@@ -27,6 +27,6 @@ public class CartSteps {
     @Step("Verifying that the cart is empty")
     @Description("Asserts that the cart has no items left.")
     public void cart_is_empty() {
-        Assert.assertTrue(cartPage.isCartEmpty());
+        Assertions.assertTrue(cartPage.isCartEmpty());
     }
 }
